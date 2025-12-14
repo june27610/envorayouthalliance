@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile & Account | ENVORA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Parisienne&display=swap" rel="stylesheet">
+  <style>*{font-family: "Outfit", sans-serif;}</style>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/workspace.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/profile.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="image_ak/favicon.png">
+</head>
+
+<body>
+  <main class="dashboard-root d-flex">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <img src="image_ak/logo.gif" alt="envora" class="sidebar-logo">
+        <a href="index.html" class="sidebar-title-link">
+          <h2 class="sidebar-title">ENVORA</h2>
+        </a>
+        <button id="closeSidebar" class="icon-btn sidebar-close">
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="sidebar-item">
+            <a href="workspace.html"><i class="bi bi-house-fill"></i><span>Home</span></a>
+          </li>
+          <li class="sidebar-item">
+            <a href="challenge_main.html"><i class="bi bi-lightning-charge-fill"></i><span>Smart Challenges</span></a>
+          </li>
+          <li class="sidebar-item">
+            <a href="quizhome.html"><i class="bi bi-people-fill"></i><span>Quizzes</span></a>
+          </li>
+        </ul>
+      </nav>
+
+      <hr>
+
+      <ul class="sidebar-bottom-links list-unstyled m-0 p-0">
+        <li class="sidebar-item active"><a href="profile.html"><i class="bi bi-person-circle"></i><span>Profile & Account</span></a></li>
+        <li class="sidebar-item"><a href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i><span>Log Out</span></a></li>
+      </ul>
+    </aside>
+
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+    <!-- Main content -->
+    <section class="main flex-grow-1">
+      <div class="container-fluid px-3 px-md-4">
+
+        <!-- Topbar -->
+        <header class="topbar d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2">
+          <div class="row w-100">
+            <div class="col-11">
+              <h3 class="mb-0">Profile & Account</h3>
+              <p class="muted mb-0">Manage your profile information and personal goals</p>
+            </div>
+            <div class="col-1">
+              <button id="toggleSidebar" class="icon-btn sidebar-toggle">
+                <i class="bi bi-list"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Profile Content -->
+        <div class="profile-container mt-4">
+          <div class="row g-4">
+            
+            <!-- Profile Header -->
+            <div class="col-12">
+              <div class="profile-header-card">
+                <div class="profile-avatar">
+                  <img src="image_ak/profile.jpg" alt="Profile" id="profileImage">
+                  <button class="btn-avatar-edit" id="editAvatarBtn">
+                    <i class="bi bi-camera-fill"></i>
+                  </button>
+                </div>
+                <div class="profile-info">
+                  <h2 class="profile-name" id="profileName">User</h2>
+                  <p class="profile-email text-muted" id="profileEmail">Email</p>
+                  <p class="profile-join-date text-muted" id="profileJoinDate">Member since _</p>
+                </div>
+                <div class="profile-stats">
+                  <div class="stat-item">
+                    <div class="stat-value">-</div>
+                    <div class="stat-label">Coins</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">-</div>
+                    <div class="stat-label">Badges</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">-</div>
+                    <div class="stat-label">Progress</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="col-12 col-lg-6">
+              <div class="profile-card">
+                <div class="profile-card-header">
+                  <i class="bi bi-person"></i>
+                  <h4 class="card-section-title">Personal Information</h4>
+                </div>
+                <div class="profile-card-body">
+                  <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" id="fullName" value="">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="email" value="">
+                  </div>
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" value="">
+                  </div>
+                  <div class="form-group">
+                    <label>Bio</label>
+                    <textarea class="form-control" id="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                  </div>
+                  <button class="btn btn-save">Save Changes</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Goals Section -->
+            <div class="col-12 col-lg-6">
+              <div class="profile-card">
+                <div class="profile-card-header">
+                  <i class="bi bi-bullseye"></i>
+                  <h4 class="card-section-title">My Goals</h4>
+                  <button class="btn btn-add-goal" id="addGoalBtn">
+                    <i class="bi bi-plus-circle"></i> Add Goal
+                  </button>
+                </div>
+                <div class="profile-card-body">
+                  <div id="goalsList">
+                    
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="javascript/workspace.js"></script>
+  <script src="javascript/profile.js"></script>
+  <script>
+    // Logout
+    document.getElementById('logoutBtn')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (confirm('Are you sure you want to log out?')) {
+        localStorage.removeItem('isSignedIn');
+        localStorage.removeItem('envoraCurrentUser');
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+
+</html>
+
