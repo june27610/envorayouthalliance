@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community | ENVORA</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/workspace.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image_ak/favicon.png">
+
+    <style>
+        .community-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .post-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(17, 32, 34, 0.08);
+        }
+
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38ae60, #F98513);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .post-author {
+            font-weight: 700;
+            color: #112022;
+            margin: 0;
+        }
+
+        .post-time {
+            color: #6b6b6b;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .post-content {
+            color: #112022;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .post-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .post-stats {
+            display: flex;
+            gap: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(17, 32, 34, 0.1);
+        }
+
+        .post-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b6b6b;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .post-stat:hover {
+            color: #38ae60;
+        }
+
+        .post-stat.liked {
+            color: #F98513;
+        }
+
+        .post-stat i {
+            font-size: 1.2rem;
+        }
+
+        .create-post-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .create-post-input {
+            border: none;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            background: #f8faf9;
+            resize: none;
+            min-height: 100px;
+            font-family: "Outfit", sans-serif;
+        }
+
+        .create-post-input:focus {
+            outline: none;
+            background: #f1f5f2;
+        }
+
+        .create-post-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .btn-post {
+            background: linear-gradient(135deg, #38ae60, #2d8f4f);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-post:hover {
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .badge-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 174, 96, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #38ae60;
+            font-weight: 600;
+        }
+
+        .coin-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(249, 133, 19, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #F98513;
+            font-weight: 600;
+        }
+
+        .comment-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(17, 32, 34, 0.1);
+        }
+
+        .comment {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .comment-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38ae60, #F98513);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            color: #112022;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .comment-text {
+            color: #6b6b6b;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .comment-input {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .comment-input input {
+            flex: 1;
+            border: 1px solid rgba(17, 32, 34, 0.1);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .comment-input button {
+            background: #38ae60;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .post-stats {
+                gap: 1rem;
+            }
+
+            .create-post-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-post {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="dashboard-root d-flex">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <img src="image_ak/logo.gif" alt="envora" class="sidebar-logo">
+                <a href="index.html" class="sidebar-title-link">
+                    <h2 class="sidebar-title">ENVORA</h2>
+                </a>
+                <button id="closeSidebar" class="icon-btn sidebar-close">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="sidebar-item">
+                        <a href="workspace.html"><i class="bi bi-house-fill"></i><span>Home</span></a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="challenge_main.html"><i class="bi bi-lightning-charge-fill"></i><span>Smart
+                                Challenges</span></a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="quizhome.html"><i class="bi bi-people-fill"></i><span>Quizzes</span></a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="rewards.html"><i class="bi bi-gift-fill"></i><span>Rewards</span></a>
+                    </li>
+                    <li class="sidebar-item active">
+                        <a href="community.html"><i class="bi bi-chat-dots-fill"></i><span>Community</span></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <hr>
+
+            <ul class="sidebar-bottom-links list-unstyled m-0 p-0">
+                <li class="sidebar-item"><a href="profile.html"><i class="bi bi-person-circle"></i><span>Profile &
+                            Account</span></a></li>
+                <li class="sidebar-item"><a href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i><span>Log
+                            Out</span></a></li>
+            </ul>
+        </aside>
+
+        <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+        <section class="main flex-grow-1">
+            <div class="container-fluid px-3 px-md-4">
+                <header class="topbar d-flex justify-content-between align-items-center gap-2 mb-4">
+                    <div>
+                        <h3 class="page-title mb-0">Community</h3>
+                        <p class="page-subtitle muted mb-0">Share your achievements, connect with others, and inspire
+                            change</p>
+                    </div>
+                    <button id="toggleSidebar" class="icon-btn sidebar-toggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </header>
+
+                <div class="community-container">
+                    <!-- Create Post -->
+                    <div class="create-post-card">
+                        <div class="post-header">
+                            <div class="post-avatar" id="userAvatar">U</div>
+                            <div>
+                                <p class="post-author mb-0" id="userName">User</p>
+                                <p class="post-time mb-0">Share something...</p>
+                            </div>
+                        </div>
+                        <textarea class="create-post-input" id="postText"
+                            placeholder="What's on your mind? Share your achievements, coins, badges, or environmental tips..."></textarea>
+                        <div class="create-post-actions">
+                            <div>
+                                <button type="button" class="btn btn-sm"
+                                    onclick="document.getElementById('postImageInput').click()"
+                                    style="border: 1px solid #ddd; background: transparent;">
+                                    <i class="bi bi-image"></i> Add Image
+                                </button>
+                                <input type="file" id="postImageInput" accept="image/*" style="display: none;"
+                                    onchange="handleImageSelect(event)">
+                            </div>
+                            <button class="btn-post" onclick="createPost()">Post</button>
+                        </div>
+                        <div id="selectedImagePreview" style="display: none; margin-top: 1rem;">
+                            <img id="previewImg" src="" alt="Preview"
+                                style="max-width: 100%; border-radius: 12px; max-height: 200px;">
+                            <button onclick="removeImage()" class="btn btn-sm btn-danger mt-2">Remove</button>
+                        </div>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div id="postsFeed"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="javascript/workspace.js"></script>
+    <script>
+        let selectedImage = null;
+        let posts = JSON.parse(localStorage.getItem('communityPosts') || '[]');
+        const demoPosts = [
+            {
+                author: "Luna Green",
+                content: "Planted my first balcony garden today 🌱 Small steps still matter.",
+                image: null
+            },
+            {
+                author: "Kai Rivers",
+                content: "Saved 120 liters of water this week by fixing leaks at home 💧",
+                image: null
+            },
+            {
+                author: "Mira Sol",
+                content: "Thrifted this bag instead of buying new. Looks better, feels better ♻️",
+                image: null
+            },
+            {
+                author: "Noah Elm",
+                content: "Anyone else trying a zero-waste lunch for school?",
+                image: null
+            },
+            {
+                author: "Ava Bloom",
+                content: "Switched off unused appliances for a month — my bill dropped noticeably!",
+                image: null
+            }
+        ];
+        function generateDemoPosts() {
+            if (posts.length > 0) return;
+
+            const now = Date.now();
+
+            posts = demoPosts.map((demo, index) => ({
+                id: now - index * 60000,
+                author: demo.author,
+                avatar: demo.author.charAt(0),
+                content: demo.content,
+                image: demo.image,
+                likes: Math.floor(Math.random() * 20),
+                comments: [],
+                time: new Date(now - index * 60000).toISOString(),
+                liked: false
+            }));
+
+            localStorage.setItem('communityPosts', JSON.stringify(posts));
+        }
+
+
+        function getCurrentUser() {
+            try {
+                return JSON.parse(localStorage.getItem('envoraCurrentUser') || 'null');
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function updateUserDisplay() {
+            const user = getCurrentUser();
+            if (user) {
+                const name = user.username || user.fullname || 'User';
+                document.getElementById('userName').textContent = name;
+                document.getElementById('userAvatar').textContent = name.charAt(0).toUpperCase();
+            }
+        }
+
+        function handleImageSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    selectedImage = e.target.result;
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('selectedImagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeImage() {
+            selectedImage = null;
+            document.getElementById('selectedImagePreview').style.display = 'none';
+            document.getElementById('postImageInput').value = '';
+        }
+
+        function createPost() {
+            const text = document.getElementById('postText').value.trim();
+            if (!text && !selectedImage) {
+                alert('Please write something or add an image!');
+                return;
+            }
+
+            const user = getCurrentUser();
+            const post = {
+                id: Date.now(),
+                author: user?.username || user?.fullname || 'User',
+                avatar: (user?.username || user?.fullname || 'U').charAt(0).toUpperCase(),
+                content: text,
+                image: selectedImage,
+                likes: 0,
+                comments: [],
+                time: new Date().toISOString(),
+                liked: false
+            };
+
+            posts.unshift(post);
+            localStorage.setItem('communityPosts', JSON.stringify(posts));
+
+            document.getElementById('postText').value = '';
+            removeImage();
+            renderPosts();
+        }
+
+        function likePost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                if (post.liked) {
+                    post.likes--;
+                    post.liked = false;
+                } else {
+                    post.likes++;
+                    post.liked = true;
+                }
+                localStorage.setItem('communityPosts', JSON.stringify(posts));
+                renderPosts();
+            }
+        }
+        function deletePost(postId) {
+            if (!confirm('Delete this post?')) return;
+
+            posts = posts.filter(p => p.id !== postId);
+            localStorage.setItem('communityPosts', JSON.stringify(posts));
+            renderPosts();
+        }
+
+        function addComment(postId, text) {
+            const post = posts.find(p => p.id === postId);
+            if (post && text.trim()) {
+                const user = getCurrentUser();
+                post.comments.push({
+                    author: user?.username || user?.fullname || 'User',
+                    avatar: (user?.username || user?.fullname || 'U').charAt(0).toUpperCase(),
+                    text: text.trim(),
+                    time: new Date().toISOString()
+                });
+                localStorage.setItem('communityPosts', JSON.stringify(posts));
+                renderPosts();
+            }
+        }
+
+        function renderPosts() {
+            const feed = document.getElementById('postsFeed');
+            if (posts.length === 0) {
+                feed.innerHTML = '<div class="post-card text-center" style="padding: 3rem;"><p style="color: #6b6b6b;">No posts yet. Be the first to share!</p></div>';
+                return;
+            }
+            const currentUser = getCurrentUser();
+
+            feed.innerHTML = posts.map(post => {
+                const timeAgo = getTimeAgo(new Date(post.time));
+                const commentsHtml = post.comments.map(c => `
+                    <div class="comment">
+                        <div class="comment-avatar">${c.avatar}</div>
+                        <div class="comment-content">
+                            <div class="comment-author">${c.author}</div>
+                            <p class="comment-text">${c.text}</p>
+                        </div>
+                    </div>
+                `).join('');
+                const isOwner = currentUser &&
+                    (post.author === currentUser.username || post.author === currentUser.fullname);
+
+
+                return `
+                    <div class="post-card">
+                        <div class="post-header" style="justify-content: space-between;">
+    <div style="display: flex; gap: 1rem; align-items: center;">
+        <div class="post-avatar">${post.avatar}</div>
+        <div>
+            <p class="post-author mb-0">${post.author}</p>
+            <p class="post-time mb-0">${timeAgo}</p>
+        </div>
+    </div>
+
+    ${isOwner ? `
+        <button class="btn btn-sm btn-outline-danger"
+            onclick="deletePost(${post.id})">
+            <i class="bi bi-trash"></i>
+        </button>
+    ` : ''}
+</div>
+
+                        ${post.content ? `<div class="post-content">${post.content}</div>` : ''}
+                        ${post.image ? `<img src="${post.image}" alt="Post image" class="post-image">` : ''}
+                        <div class="post-stats">
+                            <div class="post-stat ${post.liked ? 'liked' : ''}" onclick="likePost(${post.id})">
+                                <i class="bi ${post.liked ? 'bi-heart-fill' : 'bi-heart'}"></i>
+                                <span>${post.likes}</span>
+                            </div>
+                            <div class="post-stat">
+                                <i class="bi bi-chat"></i>
+                                <span>${post.comments.length}</span>
+                            </div>
+                        </div>
+                        <div class="comment-section">
+                            ${commentsHtml}
+                            <div class="comment-input">
+                                <input type="text" id="comment-${post.id}" placeholder="Write a comment...">
+                                <button onclick="addComment(${post.id}, document.getElementById('comment-${post.id}').value); document.getElementById('comment-${post.id}').value = '';">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            if (seconds < 60) return 'just now';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes}m ago`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours}h ago`;
+            const days = Math.floor(hours / 24);
+            return `${days}d ago`;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUserDisplay();
+            generateDemoPosts();
+            renderPosts();
+
+            // Logout
+            document.getElementById('logoutBtn')?.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (confirm('Are you sure you want to log out?')) {
+                    localStorage.removeItem('isSignedIn');
+                    localStorage.removeItem('envoraCurrentUser');
+                    window.location.href = 'index.html';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

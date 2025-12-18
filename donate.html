@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | ENVORA</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="css/top_nav.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/donation.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <!-- Google Font Link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Parisienne&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image_ak/favicon.png">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="image_ak/logo.gif" alt="ElementVerse Logo" />
+                <span class="line ms-2">|</span>
+                <span class="WebsiteName ms-2">ENVORA</span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Start -->
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <!-- Nav Links -->
+                <ul class="navbar-nav ms-lg-3 navbarM">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-fill"></i>
+                            Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="features.html"><i class="bi bi-bag-dash-fill"></i>
+                            Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="learn.html"><i class="bi bi-lightbulb-fill"></i>
+                            Learn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="bi bi-people-fill"></i>
+                            About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="donate.html"><i class="bi bi-heart-fill"></i>
+                            Donate</a></li>
+                </ul>
+
+                <div class="nav-buttons d-flex flex-lg-row flex-column mt-3 mt-lg-0">
+                    <a href="signin.html?mode=signin" class="btn btn-signin mb-2 mb-lg-0">Sign In</a>
+                    <a href="signin.html?mode=signup" class="btn btn-signup">Sign Up</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Donation Form Section -->
+    <section class="donation-form-section" id="donate-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="donation-form-card">
+                        <div class="form-header text-center mb-4">
+                            <h2 class="section-title">Make a Donation</h2>
+                            <p class="section-subtitle">Your support helps us create cleaner, greener parks for everyone
+                            </p>
+                        </div>
+
+                        <!-- How to donate + where funds go -->
+                        <div class="alert" style="background: rgba(56,174,96,0.08); border:1px solid rgba(56,174,96,0.25); border-radius:14px;">
+                            <h5 style="margin-bottom:8px;"><i class="bi bi-info-circle-fill"></i> How to donate</h5>
+                            <ul style="margin:0; padding-left: 18px;">
+                                <li>Fill in your details and the amount below.</li>
+                                <li>Choose your transfer method.</li>
+                                <li>After you donate, upload your payment receipt/screenshot in the receipt section below.</li>
+                            </ul>
+                            <p style="margin:10px 0 0;">
+                                <strong>How we use your donation:</strong> all donated money goes to <strong>local park revitalization</strong> —
+                                clean-up equipment, waste bin placement, basic repairs, awareness materials, and community activities.
+                            </p>
+                        </div>
+
+                        
+
+                        <form id="donationForm" class="donation-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="donorName" class="form-label">Full Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="donorName"
+                                        placeholder="Enter your full name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="donorEmail" class="form-label">Email Address <span
+                                            class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="donorEmail"
+                                        placeholder="Enter your email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="donorPhone" class="form-label">Phone Number <span
+                                            class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="donorPhone"
+                                        placeholder="Enter your phone number" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="donationAmount" class="form-label">Donation Amount (MMK) <span
+                                            class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="donationAmount"
+                                        placeholder="Enter amount" min="1000" step="1000" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Payment Method <span class="text-danger">*</span></label>
+                                    <div class="payment-methods">
+                                        <input type="radio" class="btn-check" name="paymentMethod" id="card"
+                                            value="Card" required>
+                                        <label class="btn btn-payment" for="card">
+                                            <i class="bi bi-credit-card"></i> Card
+                                        </label>
+                                        <input type="radio" class="btn-check" name="paymentMethod" id="kbz"
+                                            value="KBZ Pay">
+                                        <label class="btn btn-payment" for="kbz">
+                                            <i class="bi bi-wallet2"></i> KBZ Pay
+                                        </label>
+                                        <input type="radio" class="btn-check" name="paymentMethod" id="wave"
+                                            value="Wave Pay">
+                                        <label class="btn btn-payment" for="wave">
+                                            <i class="bi bi-wallet2"></i> Wave Pay
+                                        </label>
+                                        <input type="radio" class="btn-check" name="paymentMethod" id="aya"
+                                            value="AYA Pay">
+                                        <label class="btn btn-payment" for="aya">
+                                            <i class="bi bi-wallet2"></i> AYA Pay
+                                        </label>
+                                        <input type="radio" class="btn-check" name="paymentMethod" id="cb"
+                                            value="CB Pay">
+                                        <label class="btn btn-payment" for="cb">
+                                            <i class="bi bi-wallet2"></i> CB Pay
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="donorNotes" class="form-label">Notes (Optional)</label>
+                                    <textarea class="form-control" id="donorNotes" rows="3"
+                                        placeholder="Any additional message or notes..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="donationReceipt" class="form-label">
+                                        Upload Donation Receipt <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control" type="file" id="donationReceipt" accept=".png,.jpg,.jpeg,.pdf" required>
+                                    <div class="form-text" style="color: rgba(17,32,34,0.65);">
+                                        Accepted: PNG/JPG/PDF. 
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-donate-submit w-100">Donate Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="confirmationModalLabel">Confirm Your Donation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="confirmation-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Name:</span>
+                            <span class="detail-value" id="confirmName"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Email:</span>
+                            <span class="detail-value" id="confirmEmail"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Phone:</span>
+                            <span class="detail-value" id="confirmPhone"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Amount:</span>
+                            <span class="detail-value" id="confirmAmount"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Payment Method:</span>
+                            <span class="detail-value" id="confirmPayment"></span>
+                        </div>
+                        <div class="detail-row" id="confirmNotesRow" style="display: none;">
+                            <span class="detail-label">Notes:</span>
+                            <span class="detail-value" id="confirmNotes"></span>
+                        </div>
+                    </div>
+                    <p class="confirmation-message mt-3">Please review your donation details and confirm to proceed.</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-confirm-donate" id="confirmDonateBtn">Confirm Donation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content thank-you-modal">
+                <div class="modal-body text-center py-5">
+                    <div class="thank-you-icon mb-4">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <h3 class="thank-you-title mb-3">Thank You!</h3>
+                    <p class="thank-you-message mb-4">Your donation has been received. We truly appreciate your support
+                        in helping us revitalize local parks and create cleaner, greener communities.</p>
+                    <p class="thank-you-submessage">You will receive a confirmation email shortly with your donation
+                        receipt.</p>
+                    <button type="button" class="btn btn-thank-you" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="site-footer">
+        <div class="footer-top py-5">
+            <div class="container">
+                <div class="row gy-4">
+
+                    <!-- Brand Section -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-brand">
+                            <a href="index.html" class="brand-link d-flex align-items-center mb-2">
+                                <img src="image_ak/favicon.png" alt="Envora logo" class="footer-logo me-2">
+                                <span class="brand-name">ENVORA</span>
+                            </a>
+                            <p class="brand-tag">
+                                Empowering youth to reduce waste and create cleaner, greener park communities.
+                            </p>
+
+                            <div class="footer-social d-flex gap-3 mt-3">
+                                <a href="https://twitter.com" aria-label="Twitter" class="social-link"><i
+                                        class="bi bi-twitter"></i></a>
+                                <a href="https://facebook.com" aria-label="Facebook" class="social-link"><i
+                                        class="bi bi-facebook"></i></a>
+                                <a href="https://instagram.com" aria-label="Instagram" class="social-link"><i
+                                        class="bi bi-instagram"></i></a>
+                                <a href="https://youtube.com" aria-label="YouTube" class="social-link"><i
+                                        class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <div class="footer-links">
+                            <h4>Quick Links</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="features.html">Features</a></li>
+                                <li><a href="learn.html">Learn</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="donate.html">Donate</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Resources -->
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <div class="footer-resources">
+                            <h4>Resources</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="index.html#ourActivities">Our Activities</a></li>
+                                <li><a href="about.html#FAQ">FAQ</a></li>
+                                <li><a href="about.html#review">Reviews</a></li>
+                                <li><a href="references.html">References</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contact / Newsletter -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-contact">
+                            <p>
+                                By joining us, you choose a cleaner future — you choose responsibility and real impact.
+                            </p>
+
+                            <form class="newsletter-form mt-3 d-flex flex-wrap gap-2" action="#" method="post">
+                                <input id="footer-email" type="email" name="email" class="form-control flex-grow-1"
+                                    placeholder="Your email address" required>
+                                <button type="submit" class="btn btn-news px-4">Join</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <hr>
+        </div>
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <p class="mb-0 mt-0 copyright">© <span id="year">2025</span> Envora Youth Alliance. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="javascript/donate.js"></script>
+    <script src="javascript/navbar.js"></script>
+</body>
+
+</html>

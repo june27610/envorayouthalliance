@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>References | ENVORA</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Parisienne&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/top_nav.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/footer.css">
+
+  <link rel="icon" type="image/png" href="image_ak/favicon.png">
+  <style>
+    body {
+      padding-top: 90px;
+      font-family: "Outfit", sans-serif;
+    }
+
+    .ref-card {
+      background: rgba(56, 174, 96, 0.06);
+      border: 1px solid rgba(56, 174, 96, 0.18);
+      border-radius: 18px;
+      padding: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container py-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+      <h2 class="m-0">References</h2>
+      <button class="btn btn-outline-secondary" type="button" onclick="history.back()">
+        <i class="bi bi-arrow-left"></i> Go Back
+      </button>
+    </div>
+
+    <div class="ref-card">
+      <ul class="mb-0">
+        <li>https://www.reliance-foundry.com/blog/waste-management-in-parks?srsltid=AfmBOopjRndjT
+          sKMj1bygsV08iMCBhS7n7ZhwsS1j3dmaC1_K3sL0IRu
+        </li>
+        <li>https://www.rts.com/blog/smart-waste-management-technologies/ </li>
+        <li>https://www.miracle-recreation.com/blog/benefits-of-parks-in-your-community/?lang=can
+        </li>
+        <li>https://www.ifc.org/en/blogs/2024/the-world-has-a-waste-problem
+        </li>
+        <li>https://www.earthday.org/how-our-trash-impacts-the-environment/
+        </li>
+        <li>https://datatopics.worldbank.org/what-a-waste/trends_in_solid_waste_management.html
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top py-5">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-brand">
+              <a href="index.html" class="brand-link d-flex align-items-center mb-2">
+                <img src="image_ak/favicon.png" alt="Envora logo" class="footer-logo me-2">
+                <span class="brand-name">ENVORA</span>
+              </a>
+              <p class="brand-tag">Empowering youth to reduce waste and create cleaner, greener park communities.</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-6">
+            <div class="footer-links">
+              <h4>Quick Links</h4>
+              <ul class="list-unstyled">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="donate.html">Donate</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-6">
+            <div class="footer-resources">
+              <h4>Resources</h4>
+              <ul class="list-unstyled">
+                <li><a href="index.html#ourActivities">Our Activities</a></li>
+                <li><a href="about.html#FAQ">FAQ</a></li>
+                <li><a href="about.html#review">Reviews</a></li>
+                <li><a href="references.html">References</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-contact">
+              <p>By joining us, you choose a cleaner future — you choose responsibility and real impact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+    </div>
+    <div class="footer-bottom text-center">
+      <div class="container">
+        <p class="mb-0 mt-0 copyright">© <span id="year">2025</span> Envora Youth Alliance. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="javascript/navbar.js"></script>
+</body>
+
+</html>
