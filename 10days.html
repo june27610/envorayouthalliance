@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10-Day Challenge | ENVORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" href="image_ak/favicon.png">
+
+<style>
+* {
+  font-family: "Outfit", sans-serif;
+}
+
+.challenge-page {
+  background: linear-gradient(180deg, #f1ede8, #f9f7f4);
+  color: #112022;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.challenge-back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(17, 32, 34, 0.1);
+  border-radius: 10px;
+  text-decoration: none;
+  color: #112022;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.challenge-back-btn:hover {
+  transform: translateY(-2px);
+  color: #38ae60;
+}
+
+@media (max-width: 768px) {
+  .challenge-back-btn {
+    top: 10px;
+    left: 10px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+.banner {
+  width: 90%;
+  max-width: 900px;
+  margin: 60px auto 20px;
+  padding: 40px 30px;
+  text-align: center;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #38ae60, #F98513);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  color: #fff;
+}
+
+.banner-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.banner-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.coin-counter {
+  width: 90%;
+  max-width: 700px;
+  margin-bottom: 20px;
+  text-align: right;
+  font-size: 1.1rem;
+  color: #112022;
+  font-weight: 600;
+}
+
+.coin-counter i { 
+  color: #F98513; 
+  margin-left: 5px; 
+}
+
+.timeline-container { 
+  width: 90%; 
+  max-width: 700px; 
+  margin-bottom: 40px; 
+}
+
+.timeline-heading { 
+  text-align: center; 
+  margin-bottom: 24px; 
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #112022;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 20px;
+  margin-left: 12px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: rgba(56, 174, 96, 0.3);
+}
+
+.event { 
+  position: relative; 
+  padding-left: 36px; 
+}
+
+.dot {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #38ae60;
+  box-shadow: 0 0 0 4px rgba(56, 174, 96, 0.15);
+}
+
+.event-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  border: 1px solid rgba(17, 32, 34, 0.1);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.event-info {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.event-icon {
+  font-size: 1.5rem;
+  color: #38ae60;
+  margin-top: 4px;
+}
+
+.event-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.event-day { 
+  font-size: 0.75rem; 
+  color: #38ae60; 
+  margin-bottom: 3px; 
+  font-weight: 600;
+}
+
+.event-title { 
+  font-weight: 600; 
+  font-size: 1rem;
+  overflow-wrap: anywhere; 
+  color: #112022;
+}
+
+.complete-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #F98513;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.complete-btn:hover {
+  transform: scale(1.05);
+  background-color: #e6750f;
+}
+
+.complete-btn.completed { 
+  background-color: #38ae60;
+  cursor: default;
+}
+
+.modal-content {
+  background-color: #fff;
+  color: #112022;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.modal-body i {
+  font-size: 3rem;
+  color: #F98513;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.modal-footer button { 
+  border-radius: 10px; 
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 30px 20px;
+    margin: 50px auto 15px;
+  }
+  
+  .banner-title {
+    font-size: 1.5rem;
+  }
+  
+  .banner-text {
+    font-size: 0.9rem;
+  }
+  
+  .coin-counter {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+  
+  .timeline-container {
+    width: 95%;
+  }
+  
+  .timeline-heading {
+    font-size: 1.25rem;
+  }
+  
+  .event-card {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .complete-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+  
+  .event-title {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .event-card {
+    flex-direction: column;
+    padding: 12px;
+  }
+  
+  .event-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .event-icon {
+    font-size: 1.25rem;
+  }
+  
+  .event-day {
+    font-size: 0.7rem;
+  }
+  
+  .event-title {
+    font-size: 0.85rem;
+  }
+}
+</style>
+</head>
+<body class="challenge-page" data-challenge-id="10days">
+<a href="challenge_main.html" class="challenge-back-btn">
+  <i class="bi bi-arrow-left"></i> Back to Challenges
+</a>
+
+<div class="banner">
+  <h1 class="banner-title">🔥 10-Day Challenges</h1>
+  <p class="banner-text">Complete tasks over 10 days and earn coins!</p>
+</div>
+
+<div class="coin-counter">
+  Coins: <span id="coins">0</span> <i class="fa-solid fa-coins"></i>
+</div>
+
+<div class="timeline-container">
+  <h2 class="timeline-heading">Challenge Timeline</h2>
+  <div class="timeline">
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+         <i class="fa-solid fa-bag-shopping event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 1</span>
+            <span class="event-title">Pick up 10 pieces of trash</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-sort event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 2</span>
+            <span class="event-title">Sort 5 items into recycling correctly</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-camera event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 3</span>
+            <span class="event-title">Take a photo of one overflowing bin or trash hotspot</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-wrench event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 4</span>
+            <span class="event-title">Create a small DIY craft from 1 piece of trash</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+            <i class="fa-solid fa-share event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 5</span>
+            <span class="event-title">Share 1 eco tip on social media or with friends</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-trash event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 6</span>
+            <span class="event-title">Pick up 15 pieces of litter in the park</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-magnifying-glass event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 7</span>
+            <span class="event-title">Identify 3 problem areas in park and suggest solutions</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-recycle event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 8</span>
+            <span class="event-title"> Collect 5 recyclables for reuse</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-chalkboard-user event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 9</span>
+            <span class="event-title">Teach a friend about proper trash disposal</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+    <div class="event">
+      <span class="dot"></span>
+      <div class="event-card">
+        <div class="event-info">
+          <i class="fa-solid fa-book event-icon"></i>
+          <div class="event-text">
+            <span class="event-day">Day 10</span>
+            <span class="event-title">Reflective summary: total trash collected, crafts made, lessons learned</span>
+          </div>
+        </div>
+        <button class="complete-btn" onclick="completeTask(this)">Complete</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Proof submission -->
+<div class="timeline-container" style="max-width: 700px;">
+  <h2 class="timeline-heading">Submit Proof</h2>
+  <div class="event-card" style="background:#fff; border:1px solid rgba(17,32,34,0.1); border-radius:14px; padding:16px;">
+    <div style="background: rgba(56,174,96,0.08); border-left: 4px solid #38ae60; border-radius: 8px; padding: 12px 14px; margin-bottom: 18px;">
+      <h5 style="font-weight:700; margin:0 0 8px; color:#112022; font-size:0.95rem;"><i class="bi bi-info-circle-fill" style="color:#38ae60;"></i> Submission Rules:</h5>
+      <ul style="margin:0; padding-left:20px; color: rgba(17,32,34,0.75); font-size:0.9rem;">
+        <li>Must include yourself in the picture</li>
+        <li>Don't use images from online</li>
+        <li>Photo must clearly show your 10-day challenge activities</li>
+        <li>Original content only - no stock photos</li>
+      </ul>
+    </div>
+    <form id="proofForm" style="width:100%;">
+      <div class="mb-3">
+        <label for="proofFile" class="form-label fw-semibold">Upload a photo/video/PDF proof <span class="text-danger">*</span></label>
+        <input class="form-control" type="file" id="proofFile" accept=".png,.jpg,.jpeg,.webp,.mp4,.mov,.pdf" required>
+        <div class="form-text">This is saved locally in your browser for this demo.</div>
+      </div>
+      <div class="mb-3">
+        <label for="proofNote" class="form-label fw-semibold">Note (optional)</label>
+        <textarea class="form-control" id="proofNote" rows="3" placeholder="Share your reflection summary or key results..."></textarea>
+      </div>
+      <button class="btn btn-success" type="submit"><i class="bi bi-upload"></i> Submit Proof</button>
+    </form>
+  </div>
+</div>
+
+<!-- Proof submitted modal -->
+<div class="modal fade" id="proofSubmittedModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header border-0 justify-content-center">
+        <h5 class="modal-title"><span class="badge bg-success">✅ Submitted</span></h5>
+      </div>
+      <div class="modal-body text-center">
+        <i class="fa-solid fa-check"></i>
+        Proof submitted! Thanks for staying consistent for 10 days.
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="congratsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header border-0 justify-content-center">
+        <h5 class="modal-title"><span class="badge bg-success">🎉 Congratulations!</span></h5>
+      </div>
+      <div class="modal-body">
+        <i class="fa-solid fa-star"></i>
+        You have completed all 10 tasks and earned your coins!
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="javascript/challenge-gamification.js"></script>
+<script src="javascript/challenge-proof.js"></script>
+<script>
+CHALLENGE_GAMIFICATION.updateCoinDisplay();
+
+let completedTasks = 0;
+const totalTasks = 10;
+const challengeId = '10days';
+
+function completeTask(btn) {
+  if(btn.classList.contains('completed')) return;
+
+  btn.classList.add('completed');
+  btn.textContent = 'Completed';
+
+  const coinsEarned = 10;
+  const newTotal = CHALLENGE_GAMIFICATION.addCoins(coinsEarned);
+  document.getElementById('coins').textContent = newTotal;
+
+  completedTasks++;
+  if(completedTasks === totalTasks) {
+    CHALLENGE_GAMIFICATION.completeChallenge(challengeId);
+    CHALLENGE_GAMIFICATION.addBadge('challenge_10day');
+    const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
+    congratsModal.show();
+  }
+}
+</script>
+
+</body>
+</html>
