@@ -1,0 +1,327 @@
+:root {
+  --env-bg: #ffffff;
+  --env-surface: #f4f1ec;
+  --env-text: #112022;
+  --env-muted: rgba(17, 32, 34, 0.65);
+  --env-border: rgba(17, 32, 34, 0.12);
+  --env-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+  --env-green: #38ae60;
+  --env-orange: #F98513;
+}
+
+html[data-theme="dark"] {
+  --env-bg: #0f1416;
+  --env-surface: #151c1f;
+  --env-text: #e9eef0;
+  --env-muted: rgba(233, 238, 240, 0.7);
+  --env-border: rgba(233, 238, 240, 0.14);
+  --env-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+html[data-theme="dark"] body {
+  background: var(--env-bg) !important;
+  color: var(--env-text) !important;
+}
+
+/* Basic "darken" for common surfaces */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .modal-content,
+html[data-theme="dark"] .dropdown-menu,
+html[data-theme="dark"] .card-soft,
+html[data-theme="dark"] .issue-box,
+html[data-theme="dark"] .donation-form-card,
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .time-card,
+html[data-theme="dark"] .event-card {
+  background: var(--env-surface) !important;
+  color: var(--env-text) !important;
+  border-color: var(--env-border) !important;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] .text-muted,
+html[data-theme="dark"] .muted {
+  color: var(--env-muted) !important;
+}
+
+/* Navbar enhancements (works with existing top_nav.css) */
+.envora-nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.envora-search {
+  position: relative;
+  width: min(340px, 64vw);
+}
+.envora-search input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border-radius: 999px;
+  border: 1px solid var(--env-border);
+  background: rgba(255, 255, 255, 0.9);
+  outline: none;
+}
+html[data-theme="dark"] .envora-search input {
+  background: rgba(21, 28, 31, 0.9);
+  color: var(--env-text);
+}
+.envora-search i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--env-muted);
+}
+
+.envora-icon-btn {
+  border: 1px solid var(--env-border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--env-text);
+  border-radius: 999px;
+  padding: 8px 10px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+html[data-theme="dark"] .envora-icon-btn {
+  background: rgba(21, 28, 31, 0.85);
+}
+.envora-icon-btn:hover { 
+  transform: translateY(-1px); 
+  background: rgba(255, 255, 255, 0.95);
+}
+html[data-theme="dark"] .envora-icon-btn:hover {
+  background: rgba(21, 28, 31, 0.95);
+}
+
+.envora-profile {
+  position: relative;
+}
+.envora-profile-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 240px;
+}
+.envora-profile-name {
+  font-size: 0.95rem;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.envora-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 220px;
+  background: var(--env-bg);
+  border: 1px solid var(--env-border);
+  border-radius: 14px;
+  box-shadow: var(--env-shadow);
+  padding: 8px;
+  display: none;
+  z-index: 9999;
+}
+.envora-menu.open { display: block; }
+.envora-menu a,
+.envora-menu button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 10px;
+  color: var(--env-text);
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.envora-menu a:hover,
+.envora-menu button:hover {
+  background: rgba(56, 174, 96, 0.10);
+}
+.envora-menu .danger:hover { background: rgba(249, 133, 19, 0.14); }
+.envora-menu .divider {
+  height: 1px;
+  background: var(--env-border);
+  margin: 6px 0;
+}
+
+/* Scroll-to-top button */
+.envora-top {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  z-index: 9999 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  background: linear-gradient(135deg, #38ae60, #F98513) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  cursor: pointer !important;
+  font-size: 1.2rem !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  transform: translateY(100px) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.envora-top.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.envora-top.show:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 20px rgba(56, 174, 96, 0.4) !important;
+}
+
+/* Simple reveal animations */
+.reveal,
+.fade-in {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible,
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Additional animation classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in-slow {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(56, 174, 96, 0.4);
+}
+
+@media (max-width: 992px) {
+  .envora-nav-tools {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .envora-search { width: 100%; }
+}
+
+
