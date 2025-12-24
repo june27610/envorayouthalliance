@@ -247,11 +247,12 @@
                                 By joining us, you choose a cleaner future — you choose responsibility and real impact.
                             </p>
 
-                            <form class="newsletter-form mt-3 d-flex flex-wrap gap-2" action="#" method="post">
-                                <input id="footer-email" type="email" name="email" class="form-control flex-grow-1"
+                            <form id="newsletterForm" class="newsletter-form mt-3 d-flex flex-wrap gap-2">
+                                <input id="footer-email" type="email" class="form-control flex-grow-1"
                                     placeholder="Your email address" required>
                                 <button type="submit" class="btn btn-news px-4">Join</button>
                             </form>
+
                         </div>
                     </div>
 
@@ -270,6 +271,15 @@
     </footer>
     <!-- Footer End -->
     <script src="javascript/navbar.js"></script>
+    <script>
+        document.getElementById("newsletterForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("footer-email").value;
+
+            window.location.href = `signin.html?email=${encodeURIComponent(email)}`;
+        });
+    </script>
 </body>
 
 </html>
